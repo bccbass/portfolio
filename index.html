@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benjamin Campbell</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Roboto+Flex:wght@200;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <!-- <div class="header-logo-group">
+        <a id="badge-anchor-wrapper" href="index.html">
+          <div class="badge" id="badge">
+            <div class="badge-left"><p>B</p></div>
+            <div class="badge-right"><p>C</p></div>
+          </div>
+        </a>
+        <a href="index.html" id="logo-anchor-wrapper">
+          <div class="logo">
+            <h1>Benjamin Campbell</h1>
+            <h2><em>Full Stack Developer</em></h2>
+          </div>
+        </a>
+      </div> -->
+      <h1>Benjamin Campbell</h1>
+      <h2>Full Stack Developer</h2>
+      <div class="gradient">
+        <img src="./media/pic.png" alt="" />
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li class="">
+          <a href="projects.html"> Projects</a>
+        </li>
+        <li class="">
+          <a href="blog.html"> Blog</a>
+        </li>
+        <li class="">
+          <a href="now.html"> Now</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main id="index-main">
+      <article id="introduction" class="card">
+        <h2 id="">Hi, I'm Ben.</h2>
+        <p>
+          Software engineer with a team focused mentality and project oriented
+          mindset. Strong functional programming approach with a passion for
+          solving problems. A clear communicator possessing a positive and
+          supportive attitude. Experience in Audio Engineering, Hardware and
+          Software Interfacing, mapping traditional music creation to modern
+          technological paradigms.
+        </p>
+        <figure>
+          Skills -> JavaScript (ES6+) Python | Node.js | Express | Flask | React
+          | RESTful API | SQL-PostGreSQL | NoSQL-MongoDB | HTML/CSS | Git/GitHub
+          | Agile
+
+          <section class="socials">
+            <a
+              href="https://www.linkedin.com/in/benjamin-campbell-91b663241/"
+              target="_blank"
+              rel="noreferer noopener"
+              ><img src="media/linkedin.png" alt=""
+            /></a>
+            <a
+              href="https://github.com/bccbass"
+              target="_blank"
+              rel="noreferer noopener"
+              ><img src="media/github-mark.png" alt=""
+            /></a>
+            <a href="mailto:bccbass@gmail.com"
+              ><img src="media/email-logo.png" alt=""
+            /></a>
+          </section>
+        </figure>
+        <div class="icon-button">
+          <a target="_blank" href="media/Benjamin_Campbell_Resume.pdf"
+            >RESUME<sub
+              ><i class="material-symbols-outlined">download</i></sub
+            ></a
+          >
+        </div>
+      </article>
+
+      <section class="carousel">
+        <h2>Projects</h2>
+
+        <button class="slide-arrow" id="slide-left">&#8249;</button>
+        <button class="slide-arrow" id="slide-right">&#8250;</button>
+        <ul class="slide-container" id="slide-container">
+          <li class="slide">
+            <h3>PersonnelAPI</h3>
+            <h4>A RESTful API using Python/Flask with a PostgreSQL database</h4>
+            <img src="media/mick-haupt-CbNBjnXXhNg-unsplash.jpg" alt="" />
+            <p>
+              The PersonnelAPI aims to create a platform to document and store
+              records of musical contributions of session musicians in an
+              organized and centralized database, with plans to add a frontend
+              user interface in the future.
+            </p>
+            <div>
+              <a href="https://github.com/bccbass/PersonnelAPI/tree/main"
+                >-> GitHub</a
+              >
+            </div>
+          </li>
+
+          <li class="slide">
+            <h3>Yahtzee!</h3>
+            <h4>Play a game of Yahtzee! in the terminal</h4>
+            <img src="media/yahtzee-title-screen.png" alt="" />
+            <p>
+              Play a game of Yahtzee in the terminal! Written in python, this is
+              my take on the classic dice game of Yahtzee! I used ascii art to
+              add some style. OOP and functional programming approaches were
+              employed, along with full error handling for unexpected user
+              inputs.
+            </p>
+            <div>
+              <a href="https://github.com/bccbass/Yahtzee">-> GitHub</a>
+            </div>
+          </li>
+          <li class="slide">
+            <h3>Personal Website</h3>
+            <h4>Personal Website made with vanilla JavaScript, HTML and CSS</h4>
+            <img src="media/website-homepage.png" alt="" />
+            <p>
+              Designed using vanilla JavaScript, HTML, and CSS. This was the
+              first large project I completed on my coding journey and serves as
+              a professional showcase for my musical endeavors.
+            </p>
+            <div>
+              <a href="www.benjamincampbell.com">-> Site</a>
+              <a href="https://github.com/bccbass/BCWebsiteRepo">-> GitHub</a>
+            </div>
+          </li>
+
+          <li class="slide">
+            <h3>What's the Weather?</h3>
+            <h4>Frontend weather interface using Weather and Unsplash APIs</h4>
+            <img src="media/weather.png" alt="" />
+            <p>
+              Website with a searchable weather interface and corresponding
+              relevant location image. Utilizing the Weather API and Unsplash
+              API to deliver a straightforward forecast. I used vanilla
+              JavaScript, HTML, and CSS.
+            </p>
+            <div>
+              <a href="https://weather-api-chi-sooty.vercel.app"> -> Site</a>
+              <a href="https://github.com/bccbass/weather_API"> -> GitHub</a>
+            </div>
+          </li>
+          <li class="slide">
+            <h3>A ToDo list for every occasion!</h3>
+            <h4>ToDo lists in JS, Node/Express/Mongoose and Python/Flask/PostgreSQL</h4>
+            <img src="media/TODOScreenshot.png" alt="" />
+            <!-- <p>
+              I understand why a Todo list is a classic task of the coding
+              pedagocical canon. It presents so many great challenges creating
+              RESTful API's, interface and logical functionality. I made my
+              first vanilla javascript todo list with a code along over the
+              summer of 2022. After spending a bit of time with
+              MongoDB/Mongooose, Express and EJS I took a shot at creating a
+              very quick todo list that utilized a database to give inputted
+              data more statefulness. When learning to build API's with
+              Python/Flask/PostgreSQL I also made a quick ToDo to solidify those
+              fundamentals.
+            </p> -->
+            <div class="row-links">
+              <a href="https://github.com/bccbass/simpletodolist">
+                -> Github(Vanilla JS)</a
+              >
+              <a href="https://github.com/bccbass/TodoListMongoDB">
+                -> GitHub(MongoDB/Express)</a
+              >
+              <a href="https://github.com/bccbass/Flask-ToDo-RESTfulAPI">
+                -> GitHub(Python/Flask)</a
+              >
+            </div>
+          </li>
+        </ul>
+      </section>
+      <!-- <section id="site-areas">
+        <a href="projects.html" class="section-anchor projects">
+          <section>
+            <h2>Projects</h2>
+          </section>
+        </a>
+        <a href="blog.html" class="section-anchor blog">
+          <section>
+            <h2>Blog</h2>
+          </section>
+        </a>
+        <a href="now.html" class="section-anchor now">
+          <section>
+            <h2>Now</h2>
+          </section>
+        </a>
+      </section> -->
+    </main>
+    <footer>
+      <p>&copy;2023 Benjamin Campbell</p>
+    </footer>
+  </body>
+</html>
