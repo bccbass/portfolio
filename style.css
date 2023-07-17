@@ -406,6 +406,8 @@ footer {
 .text a {
   color: white;
   text-decoration: underline;
+  margin: .1rem;
+  padding: 0;
 }
 .card {
   /* position: relative; */
