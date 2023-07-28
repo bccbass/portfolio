@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benjamin Campbell</title>
+    <link rel="stylesheet" href="../style.css" />
+	<link rel="stylesheet" href="./code-themes/prism.css">
+	<script src="./code-themes/prism.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Roboto+Flex:wght@200;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="app.js" async defer></script>
+  </head>
+  <body class="lang-js" id="blog-body">
+
+
+      <nav id="">
+        <div id="nav-heading">        <h1>Benjamin Campbell</h1>
+            <h2>Full Stack Developer</h2></div>
+        <ul>
+          <li class="">
+            <a href="../index.html#blog">Home</a>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="main-content">
+       <article class="blog-post">
+		<h1>Big "O": A Sorted Affair</h1>
+		<div class="blog-credit"><h2>by Benjamin Campbell</h2><h2 id="blog-date">July 16, 2023</h2></div>
+
+<img src="./blog-media/hoare.jpeg" alt="Tony Hoare - developer of quicksort">
+<!-- <figcaption></figcaption> -->
+<span id="caption">Tony Hoare - developer of quicksort</span>
+<p>
+	The ubiquity and inner workings of sorting functions never dawned on me until I began my coding journey. I certainly never thought about the code implementation or the fact that <em>some person</em> invented the algorithm that lets me choose how to sort and display information on a website or mobile app. And who knew it would be <em>so dang interesting!!</em> In this post I've done my best to describe two common sorting algorithms, explain their big "O" time complexity and provide code examples.  
+</p>
+<h2>Bubble Sort</h2>
+	<h3>Method</h3> 
+	<p>A bubble sort algorithm works by looping over an array comparing adjacent values and swapping them if they are out of order, moving the largest element to the end of the array. This process repeats until the dataset is sorted, with the second largest value being sorted on the second iteration, third largest on the third iteration, etc. In practice this requires an outer loop over the array and a nested inner loop that iterates over the array elements, swapping out of order elements. Bubble Sorts strengths lie in its straightforward implementation and low memory consumption due to sorting in place. Its main disadvantage is that it has an undesirable quadratic time complexity.
+	</p>
+	<h3>Time Complexity:</h3> <p>Bubble sort implements a nested loop structure: every element in a given data set requires another loop over entire data set. This means that the algorithm must perform the amount of steps in the array for each element in an array, resulting in a time complexity of O(n<sup>2</sup>). Take an array with five elements as an example:
+	</p>
+	<figure>
+
+
+		<ul>
+		<li>OUTERLOOP     NESTED LOOP</li>
+		<li><span>Loop 1 </span><span>        5 steps</span></li>
+		
+		<li><span>Loop 2 </span><span>       5 steps</span></li>
+		
+		<li><span>Loop 3 </span><span>       5 steps</span></li>
+		
+		<li><span>Loop 4 </span><span>       5 steps</span></li>
+		
+		<li><span>Loop 5 </span><span>       5 steps</span></li>
+	</ul>	
+	</code>
+	</figure>
+		<p>
+		Adding all of the steps together results in 25 total steps, or 5<sup>2</sup>. So an array with 10 elements requires 10<sup>2</sup> or 100 steps to sort and an array with 100 elements requires 100<sup>2</sup> or 10,000 steps to sort.
+		
+	  The algorithm can be optimized by omitting the last element to visit from each inner loop and by breaking out of the algorithm if no swaps occur (meaning it is sorted), however this will not affect the overall time complexity for a worse case scenario.  
+	</p>
+</br>  
+
+<h2>Quick Sort:</h2>  
+	<h3>Method:</h3> <p>The Quick Sort algorithm works by employing a recursive divide and conquer approach. Two main processes are needed for its implementation: a partition process to sort subarrays around a pivot, and a main quick sort process which calls itself recursively on each resulting subarray partition.  
+		<p>
+		<em>Partition process:</em> a random pivot value is chosen from the array, creating a partition point for two sub arrays; a loop is then implemented to sort values less than the pivot in a subarray to the left and a subarray with values greater than or equal to the pivot to its right. The pivot is then placed between these subarrays and its index is the final return value.
+	</p>
+	<p>
+		<em>Quicksort process:</em> The main Quicksort function calls the partition process to determine the pivot index, then calls itself recursively on each resulting subarray. This recursion repeatedly divides the array, properly placing each iterations pivot until all elements are in their appropriate location. 
+	</p>
+	<h3>Time Complexity:</h3> 
+	<p>
+In a best to average case scenario with a large data set Quicksort has a time complexity of O(n log n), or loglinear time complexity. This can be illustrated by tracking each step of the algorithm with a sample array of 9 elements:
+		</p>
+		<img src="./blog-media/Quick_Sort_0 1.png" alt="quicksort image">
+			<span id="caption"> Image credit workat.tech</span>
+
+
+<figure><ul>
+	<li>		recursion 0: array_9_elements, for loop over each element (9 steps)</li>
+		
+	<li>	recursion 1: (array_4_elements) * 2, with a for loop over each element (8 steps)</li>
+		
+	<li>	recursion 2: (array_2_elements, array_1_element) * 2, with a for loop over each element (6 steps)</li>
+		
+		
+	<li>	recursion 3: (array_1_elements) * 2, with a for loop over each element (2 steps)</li>
+	</ul></figure>
+
+<p>
+	  For the above example with an array of 9 unsorted elements a time complexity of O(n log n) can be seen by examining the layers of recursion. These three main recursion layers correspond with the log n portion of complexity: <code class="lang-js">log 9 = 3</code>. For each of these three steps each element in the subarrays are looped over, requiring 9, 8, 6, and 2 steps respectively, yielding a total of 25 steps, roughly equalling the outcome of n log n time complexity:  <code>9 * log9 = 27</code> steps.
+	
+	  A worse case scenario occurs when an array is already sorted or has homogenous values. This scenario results in a hefty O(n<sup>2</sup>), as the partition function will loop over every array element for as many elements as there are in a dataset, more closely resembling a nested loop architecture than a divide and conquer architecture.
+	
+	  Various optimizations can be implemented to improve performance. There are different partition algorithms to choose from, including the two classics Lomuto and Hoare: the Lomuto Partition Scheme is simpler but less efficient whereas the Hoare Partition Scheme is complex but more efficient. Quick sort can be further optimized by changing the method of choosing a pivot point or by implementing a 3 subarray partition algorithm; adding a third subarray for elements equal to the pivot. This improves performance in datasets with large amounts of repeated values.   
+	</p>
+
+ <h2>Comparison:</h2> 
+ <p>
+		In smaller data sets (roughly < 1000) a bubble sort might be a more desirable choice for its simplicity of implementation and possible quicker runtime-per-step in comparison to Quicksort, however as the data set increases Quick Sort emerges as the more efficient choice. For the previous example with an array of 9 elements Quicksort requires n log n steps, or roughly 27 steps on average. In comparison a bubble sort with an O(n<sup>2</sup>) complexity requires 9<sup>2</sup> or 81 steps to return a sorted array. This disparity grows with larger datasets: for an array with 100 elements an un-optimized Quicksort algorithm requires 1,000 steps versus bubble sorts 10,000 steps. 
+	</p>
+
+
+‌
+
+<h2>Code Implementation:</h2>
+
+<h3>Bubble Sort (JavaScript):</h3>
+	<pre><code>
+const bubbleSort = (arr) => {
+
+//Outer loop over the array
+for (let i = 0; i < arr.length; i++) {
+// Inner loop over the array for each array element
+for (let j = 0; j < arr.length - i - 1; j++){
+//compare each element with its adjacent element, swapping if they are out of order
+if (arr[j] > arr[j+1]){
+let temp = arr[j]
+arr[j] = arr[j+1]
+arr[j+1] = temp}
+	}
+}
+// return sorted array
+return arr
+}
+	
+</code></pre>
+<h3>Quicksort (JavaScript):</h3>
+	
+<pre><code>
+	
+// ***** Lomuto Partition Scheme *****
+
+// function to create two subarrays of elements, one for elements > pivot, one for elements < pivot. Return new index of pivot
+const partition = (arr, start, end) => {
+// Set pivot to the last element of the array
+pivot = arr[end]
+// i pointer which stays at the last element of subarray of numbers < pivot
+let i = start-1
+// initialize j pointer and loop. J pointer stays at first element of subarray of numbers > pivot
+for (let j = start; j < end; j++) {
+// Check if element at j pointer is less than pivot
+if (arr[j] < pivot){
+//increment i pointer (the 'less than pivot' pointer)
+i+=1
+// swap j element with i element
+temp = arr[i]
+arr[i] = arr[j]
+arr[j] = temp
+	}
+}
+
+// swap first element in greater than subarray with pivot
+arr[end] = arr[i+1]
+arr[i+1] = pivot
+// return new pivot position (division point of both subarrays)
+return i+1
+}
+
+// Function to divide and conquer array recursively, calling quicksort on each successive subarray until sorted
+const quickSort = (arr, start, end) => {
+// conditional to return out of recursion
+if (start >= end){
+return}
+else
+// Sort by pivot point and returns pivot position
+pivot = partition(arr, start, end)
+// invoke quicksort on both subarrays([subarray] < pivot and [subarray] > pivot)
+quickSort(arr, start, pivot-1)
+quickSort(arr, pivot+1, end)
+// Return sorted array
+return arr
+}
+</code></pre>
+
+
+	<figure id="credit">
+		<h4>Credit:</h4>
+		<ul>
+		<li>1. GeeksforGeeks. “Bubble Sort - GeeksforGeeks.” GeeksforGeeks, 2 Feb. 2014, www.geeksforgeeks.org/bubble-sort/.</li>
+	
+	<li>2. “A Complete Overview of Quicksort (Data Structures & Algorithms #11).” Www.youtube.com, www.youtube.com/watch?v=0SkOjNaO1XY.</li>
+	
+	<li>3. The Coding Train. “Coding Challenge #143: Quicksort Visualization.” YouTube, 4 Apr. 2019, www.youtube.com/watch?v=eqo2LxRADhU. Accessed 21 Aug. 2022.</li>
+	
+	<li>4. Wikipedia Contributors. “Quicksort.” Wikipedia, Wikimedia Foundation, 23 Oct. 2019, en.wikipedia.org/wiki/Quicksort.   
+	<li>5.  “Sorting Algorithms (Quick Sort, Merge Sort) | DSA Tutorials.” _Workat.tech_, workat.tech/problem-solving/tutorial/sorting-algorithms-quick-sort-merge-sort-dsa-tutorials-6j3h98lk6j2w.</li>
+	
+	</ul></figure>
+
+	<section  id="index-blog">
+		<h2><em>More posts...</em></h2>
+		<ol>
+			  <li>
+				<a href="./blog-post-search.html"
+				  ><span>Simple Searches</span
+				  ><span class="blog-date">July 10, 2023</span></a
+				>
+			  </li>
+			  <li>
+				<a href="./blog-post-now.html"
+				  ><span>What am I up to?</span
+				  ><span class="blog-date">June 28, 2023</span></a
+				>
+			  </li>
+		</ol>
+	  </section>
+</article>
+</main>
+<footer>
+  <p>&copy;2023 Benjamin Campbell</p>
+</footer>
+</div>
+</body>
+</html>

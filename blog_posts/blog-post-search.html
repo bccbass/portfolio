@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benjamin Campbell</title>
+    <link rel="stylesheet" href="../style.css" />
+	<link rel="stylesheet" href="./code-themes/prism.css">
+	<script src="./code-themes/prism.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Roboto+Flex:wght@200;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="app.js" async defer></script>
+  </head>
+  <body class="lang-js" id="blog-body">
+
+
+      <nav id="">
+        <div id="nav-heading">        <h1>Benjamin Campbell</h1>
+            <h2>Full Stack Developer</h2></div>
+        <ul>
+          <li class="">
+            <a href="../index.html#blog">Home</a>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="main-content">
+       <article class="blog-post">
+		<h1>Simple Searches</h1>
+		<div class="blog-credit"><h2>by Benjamin Campbell</h2><h2 id="blog-date">July 10, 2023</h2></div>
+
+<img src="./blog-media/daniel-lerman-fr3YLb9UHSQ-unsplash.jpg" alt="Telescope searching over bay">
+<!-- <figcaption></figcaption> -->
+<span id="caption">image credit Daniel Lerman</span>
+<p>
+	Search algorithms are all around us and used in almost every software application imaginable. While there are vast numbers of libraries and frameworks that provide ready made and powerful search functionality, understanding some basic principles and what may be going on under the hood can be useful knowledge for developers. Whether it’s locating a targeted piece of information from a database or deducing the shortest path in a graph, a deeper knowledge can help to choose the most efficient approach and unlock its full potential. I've attempted to describe a few basic search algorithms, explain their big O time complexity and provide some basic code implementation. 
+</p>
+<h2>Linear Search</h2>
+	<h3>Method</h3> 
+	<p>
+		A linear or sequential search starts with an array and a search target and iterates over the entire array comparing the target with the current array element. If they are equal the algorithm returns a success outcome, typically the array index at which the target is found. If the algorithm reaches the end of the array without a match a typical response is -1 to indicate there is no element matching that target.
+	</p>
+	<h3>Time Complexity:</h3> 
+	<p>
+		A linear or sequential search starts with an array and a search target and iterates over the entire array comparing the target with the current array element. If they are equal the algorithm returns a success outcome, typically the array index at which the target is found. If the algorithm reaches the end of the array without a match a typical response is -1 to indicate there is no element matching that target.
+	</p>
+
+
+
+<h2>Binary Search:</h2>  
+	<h3>Method:</h3> <p>
+		A binary search algorithm implements a divide and conquer approach to locating a target number from within an array. This algorithm is more efficient than a linear search, but is only applicable to arrays that are sorted. For an array sorted in ascending order the algorithm works by comparing the element at the midpoint of the array with the search target: If the target is greater than the midpoint the first half of the array is is ignored and if the target is less than the midpoint the second half of the array is ignored. This process is repeated until the midpoint equals the target at which point its index is returned (or the target is not found, returning a value of -1).
+		<p>
+<p>
+	The algorithm can be made order-agnostic by implementing a sort-order-check, comparing the last element of the array with the first element and storing a boolean. Conditional logic is then used to ignore the appropriate half of the array when comparing midpoint to a target (i.e. if array is descending and target is greater than the midpoint the second half of the array is discarded).
+</p>
+
+	<h3>Time Complexity:</h3> 
+	<p>
+		The worst case scenario time complexity for a binary search is O(log n). For every iteration of the algorithm the data set is halved:
+	
+		</p>
+
+
+
+<figure>
+	<h4>
+		Looking at the length of the array:
+	</h4>
+	<ul>
+		<li>
+		step 0: Array length = length / 2 ^ 0 
+		</li>
+		<li>
+		step 1: Array length = length / 2 ^ 1
+	</li>
+		<li>
+		step 2: Array length = length / 2 ^ 2 
+		</li>
+		<li>	...the exponent of the divisor continues to be incremented for each step. 
+
+		</li>
+		<h4>This is illustrated when examining a hypothetical array with 40 elements:</h4>
+		<ul>
+			<li>iteration 1: Array length = 40</li>
+		
+			<li>iteration 2: Array length = 20</li>
+			
+			<li>iteration 3: Array length = 10</li>
+			
+			<li>iteration 4: Array length = 5</li>
+			
+			<li>iteration 5: Array length = 3</li>
+			
+			<li>iteration 6: Array length = 2</li>
+			
+			<li>iteration 7: Array length = 1 at which point the target is located or determined to be absent from the array</li>
+		</ul>
+		
+	</ul></figure>
+
+<p>
+	For a data set with 40 elements the maximum number of steps is 7.  One can check the assertion this algorithm is logarithmic by calculating log40 = 6.23 and see it roughly corresponds to the 7 steps from the example. A worse case scenario results when the target is either missing or at the very front or end of the array, however this does not affect the O(log n) complexity. A best case scenario has a time complexity of O(1) and occurs if the target number is at the midpoint of the list. An average case is generally O(log n).
+
+	</p>
+
+ <h2>Comparison:</h2> 
+
+<P>If a target element is being located from a *sorted array* a binary search is by far the most efficient approach. As we can see with the above hypothetical a Binary Search from an array with 40 elements results in a maximum of 7 steps. Comparatively, the worst case scenario over the same array using a linear search with time complexity O(n) would require 40 steps.</P>
+
+‌
+
+<h2>Code Implementation:</h2>
+
+<h3>Linear Search (JavaScript):</h3>
+	<pre><code>
+linearSearch = (array, target) => {
+// Loop over the array, comparing each element with the target:
+for (let i = 0; i < array.length; i++) {
+// If current array element equals the target return index of element:
+if (array[i] === target){
+return i
+	}
+}
+// If function makes it to this point without returning target index it target does not exist in array, function returns -1
+return -1
+}
+	
+</code></pre>
+<h3>Binary Search (JavaScript):</h3>
+	
+<pre><code>
+binarySearch = (arr, target) => {
+
+// Define initial start and end positions of the array
+let start = 0
+let end = arr.length - 1
+// Initialize midpoint variable, to be assigned within while loop
+let mid
+// While loop runs until start and end index are equal, allowing all parts of array to be visited or excluded (where applicable)
+while (start <= end) {
+//repeatedly finds midpoint of array section being searched
+mid = Math.floor((start + end) / 2)
+
+// Return index if target is located
+if (target == arr[mid]){
+return mid
+}
+
+// 'Discards' first half of array is target is greater than midpoint value
+else if (target > arr[mid]){
+start = mid + 1
+}
+// 'Discards' second half of array if target is less than midpoint value
+else if (target < arr[mid]){
+end = mid -1
+	}
+}
+// If while loop is completed and function makes it to this point the number was not located in the array, returning -1 as indication.
+return -1
+}
+
+</code></pre>
+
+
+	<figure id="credit">
+		<h4>Credit:</h4>
+		<ul>
+<li>1. Krishna, Ashutosh. “Search Algorithms – Linear Search and Binary Search Code Implementation and Complexity Analysis.” FreeCodeCamp.org, 11 Jan. 2022, www.freecodecamp.org/news/search-algorithms-linear-and-binary-search-explained/.</li>
+	</ul></figure>
+
+	<section  id="index-blog">
+		<h2><em>More posts...</em></h2>
+		<ol>
+            <li>
+				<a href="./blog-post-sorting.html">
+				  <span>Big "O": A Sorted Affair</span>
+				  <span class="blog-date">July 16, 2023</span>
+				</a>
+			  </li>
+			  <li>
+				<a href="./blog-post-now.html"
+				  ><span>What am I up to?</span
+				  ><span class="blog-date">June 28, 2023</span></a
+				>
+			  </li>
+		</ol>
+	  </section>
+
+</article>
+</main>
+<footer>
+  <p>&copy;2023 Benjamin Campbell</p>
+</footer>
+</div>
+</body>
+</html>
